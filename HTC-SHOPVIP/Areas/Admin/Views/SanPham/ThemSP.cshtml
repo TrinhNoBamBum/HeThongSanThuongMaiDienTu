@@ -1,0 +1,124 @@
+﻿@using HTC_SHOPVIP.Models
+@model HTC_SHOPVIP.Models.Sanpham
+
+@{
+    ViewBag.Title = "ThemSP";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="tile">
+            <h3 class="tile-title">Thêm mới sản phẩm</h3>
+          
+            <form class="row" action="/Admin/SanPham/DonSanPham" method="post" enctype="multipart/form-data">
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" >Tên sản phẩm</label>
+                    <input name="TenSP" class="form-control" type="text">
+               
+                </div>
+
+
+                <div class="form-group  col-md-3">
+                    <label class="control-label">Số lượng</label>
+                    <input name="Sltrongkho" class="form-control" type="number">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="exampleSelect1" class="control-label">Hãng Sản suất</label>
+                    <select name="MaHangSx" class="form-control" id="exampleSelect1">
+                        @using (var con = new Model1())
+                        {
+                            var db = (from s in con.HangSanXuats
+                                      select s).ToList();
+
+
+                            foreach (var item in db)
+                            {
+                                <option value="@item.MaHangSx">@item.TenHang</option>
+                            }
+
+
+
+
+                        }
+
+                    </select>
+                </div>
+                <div class="form-group col-md-3 ">
+                    <label for="exampleSelect1" class="control-label">Danh mục</label>
+                    <select name="MaloaiSP" class="form-control" id="exampleSelect1">
+                        @using (var con = new Model1())
+                        {
+                            var db = (from s in con.SP_Theloai
+                                      select s).ToList();
+
+
+                            foreach (var item in db)
+                            {
+                                <option value="@item.Maloaisp">@item.tentheloai</option>
+                            }
+
+
+
+
+                        }
+
+
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Giá bán</label>
+                    <input name="Gia" class="form-control" type="text">
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Trọng lượng</label>
+                    <input name="trongluong" class="form-control" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Bộ nhớ</label>
+                    <input name="Memory" class="form-control" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">RAM</label>
+                    <input name="Ram" class="form-control" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Pin</label>
+                    <input name="Pin" class="form-control" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Màn hình</label>
+                    <input name="Manhinh" class="form-control" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Chip</label>
+                    <input name="Chip" class="form-control" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Ảnh sản phẩm</label>
+                    <input name="anhsp" class="form-control" type="file">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="control-label">Mô tả sản phẩm</label>
+                    <textarea class="form-control" name="mota" id="mota"></textarea>
+                    <script>CKEDITOR.replace('mota');</script>
+                </div>
+                <div class="col-lg-12">
+                    <button class="user-btn-save" type="submit">Lưu lại</button>
+                    <a class="user-btn-close pull-right" href="~/Admin/SanPham/DSSanPham">Hủy bỏ</a>
+                </div>
+
+            </form>
+
+            </div>
+            
+           
+        </div>
+    </div>
+</div>
+

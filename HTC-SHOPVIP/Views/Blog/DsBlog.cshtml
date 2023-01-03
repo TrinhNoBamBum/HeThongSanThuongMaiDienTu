@@ -1,0 +1,102 @@
+﻿
+@using HTC_SHOPVIP.Models
+@model PagedList.PagedList<Blog>
+@using PagedList.Mvc
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+
+<div class="row">
+    @foreach (Blog bl in Model)
+    {
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="blog__item">
+                <div class="blog__item__pic">
+                    @{
+                        var db = new Model1();
+                        var hinhanh = db.Blog_anh.Find(bl.MaBLOG);
+                        <img src="@Url.Content("~/Content/img/blog/chinh/" + @hinhanh.Linkanh)" style="height:200px;width:300px">
+                    }
+                    @*<img src="~/Content/img/blog/loyalty1.png" alt="">*@
+                </div>
+                <div class="blog__item__text">
+                    <ul>
+                        <li><i class="fa fa-calendar-o"></i> @bl.ngayviet</li>
+                        @*<li><i class="fa fa-comment-o"></i> 5</li>*@
+                    </ul>
+                    <h5><a href="~/Blog/ChiTietTinTuc/@bl.MaBLOG"> @bl.TenBlog </a></h5>
+                    <p>
+                        @bl.Tomtat
+                    </p>
+                    <a href="~/Blog/ChiTietTinTuc/@bl.MaBLOG" class="blog__btn"> Chi tiết <span class="arrow_right"></span></a>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+</div>
+
+<div class="pageIndexs">
+
+    @for (int i = 1; i <= Model.PageCount; i++)
+    {
+
+
+        if (i == Model.PageNumber)
+        {
+
+            <span data-id="@i" style="color: #7fad39; background-color:white " class="pageIndex">@i</span>
+        }
+        else
+        {
+            <span data-id="@i" class="pageIndex">@i</span>
+        }
+
+    }
+
+
+
+    <script>
+            $(document).ready(function () {
+                $('.pageIndex').click(function () {
+                    var ChiSoTrang = $(this).data('id');
+
+                    LoadDsBlog(ChiSoTrang);
+                })
+            })
+
+
+    </script>
+    <style>
+        .pageIndexs {
+            // padding: 20px 0 0 50px;
+        }
+
+            .pageIndexs span {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border: 1px solid #b2b2b2;
+                font-size: 14px;
+                color: #b2b2b2;
+                font-weight: 700;
+                line-height: 28px;
+                text-align: center;
+                margin-right: 16px;
+            }
+
+                .pageIndexs span:hover {
+                    cursor: pointer;
+                    color: white;
+                    background-color: #7fad39;
+                }
+    </style>
+
+</div>
+
+
+
+

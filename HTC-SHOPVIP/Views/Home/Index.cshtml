@@ -1,0 +1,517 @@
+﻿@using HTC_SHOPVIP.Models
+@using System.Globalization;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+
+
+<div class="bannervip">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div id="carouselExampleIndicators" class="carousel slide slider " data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        @using (var conp = new Model1())
+                        {
+                            var anhsl = (from s in conp.Slide_anh
+                                         where s.Linkanh.Contains("bannervip")
+                                         select s).Take(4);
+
+
+                            var anhchinh = (from s in conp.Slide_anh
+                                            where s.Linkanh.Contains("anhslidechinh")
+                                            select s).FirstOrDefault();
+                            <div class="carousel-item active ">
+                                <img src="~/Content/img/slide/@anhchinh.Linkanh" class="d-block w-100" alt="...">
+                            </div>
+                            foreach (var it in anhsl)
+                            {
+                                <div class="carousel-item ">
+                                    <img src="~/Content/img/slide/@it.Linkanh" class="d-block w-100" alt="...">
+                                </div>
+                            }
+
+
+
+
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                @using (var conx = new Model1())
+                {
+                    var anhx = (from s in conx.Slide_anh
+                                where s.Linkanh.Contains("subbanner")
+                                select s
+                              ).Take(2);
+                    foreach (var inner in anhx)
+                    {
+
+
+                     <img src="~/Content/img/slide/@inner.Linkanh" alt="" class="img-bannervip">
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<section class="categories">
+    <div class="container">
+        <div class="row client-display-sp">
+            <div class="categories__slider owl-carousel">
+                @using (var con = new Model1())
+                            {
+                                var ds = (from s in con.Sanphams
+                                          join anh in con.SP_anh on s.MaSP equals anh.MaSP
+                                          where anh.Linkanh.Contains("anhchinh")
+                                          select new
+                                          {
+                                              s.MaSP,
+                                              s.TenSP,
+                                              s.Gia,
+                                              anh.Linkanh,
+                                          }
+                                        ).ToList();
+                                foreach (var it in ds)
+                                {
+                        <div class="col-lg-3 client-col-sp">
+                            <div class="categories_product">
+                                <a href="/Home/ChiTiet/?id=@it.MaSP">
+                                    <div class="client-div-chuaanh">
+                                        <img src="~/Content/img/sanpham/@it.Linkanh"
+                                             alt="" class="img-fluid" width="100">
+                                    </div>
+                                </a>
+                                <h5 class="client-tensp"><a href="/Home/ChiTiet/?id=@it.MaSP">@it.TenSP</a></h5>
+                                <h4>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", it.Gia) đ</h4>
+                            </div>
+                        </div>
+                    }
+                }
+
+       
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>SẢN PHẨM NỔI BẬT</h2>
+                </div>
+                <div class="featured__controls">
+                    <ul>
+                        <li class="active" data-filter="*">Tất Cả</li>
+                        <li data-filter=".oranges">Điện Thoại</li>
+                        <li data-filter=".fresh-meat">Máy Tính</li>
+                        <li data-filter=".vegetables">Linh Kiện</li>
+                        <li data-filter=".fastfood">Phụ Kiện</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row featured__filter">
+            @using (var con1 = new Model1())
+            {
+                var ds = (from s in con1.Sanphams
+
+                          join anh in con1.SP_anh on s.MaSP equals anh.MaSP
+                          where s.MaloaiSP == 1 && anh.Linkanh.Contains("anhchinh")
+
+                          select new
+                          {
+                              s.MaSP,
+                              s.TenSP,
+                              anh.Linkanh,
+                              s.Gia,
+                          }).ToList();
+
+                foreach (var item in ds)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges ">
+                        <div class="featured__item">
+                           
+                                <div class="featured__item__pic ">
+                                    <a href="/Home/ChiTiet/?id=@item.MaSP">
+                                        <img src="~/Content/img/sanpham/@item.Linkanh"
+                                             alt="" class="img-fluid">
+                                    </a>
+                                        <ul class="featured__item__pic__hover">
+                                            <li>
+                                                <a href="~/GioHang/AddtoCart?id=@item.MaSP"><i class="fa fa-shopping-cart"></i></a>
+                                            </li>
+                                        </ul>
+                                </div>
+                         
+                            
+                            <div class="featured__item__text">
+                                <h6><a href="/Home/ChiTiet/?id=@item.MaSP">@item.TenSP</a></h6>
+                                <h5>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", item.Gia) đ</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+            @using (var con2 = new Model1())
+            {
+                var ds = (from s in con2.Sanphams
+                          where s.MaloaiSP == 2
+                          join anh in con2.SP_anh on s.MaSP equals anh.MaSP
+                          select new
+                          {
+                              s.MaSP,
+                              s.TenSP,
+                              anh.Linkanh,
+                              s.Gia,
+                          }).ToList();
+                foreach (var it in ds)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat ">
+                        <div class="featured__item">
+                            <div class="featured__item__pic ">
+                                <a href="/Home/ChiTiet/?id=@it.MaSP">
+                                    <img src="~/Content/img/sanpham/@it.Linkanh"
+                                         alt="" class="img-fluid">
+                                </a>
+                                    <ul class="featured__item__pic__hover">
+                                      
+                                        <li><a href="~/GioHang/AddtoCart?id=@it.MaSP"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="/Home/ChiTiet/?id=@it.MaSP">@it.TenSP</a></h6>
+                                <h5>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", it.Gia) đ</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+
+
+
+            @using (var con3 = new Model1())
+            {
+                var ds = (from s in con3.Sanphams
+                          where s.MaloaiSP == 3
+                          join anh in con3.SP_anh on s.MaSP equals anh.MaSP
+                          select new
+                          {
+                              s.MaSP,
+                              s.TenSP,
+                              anh.Linkanh,
+                              s.Gia,
+                          }).ToList();
+                foreach (var it in ds)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables ">
+                        <div class="featured__item">
+                            <div class="featured__item__pic ">
+                                <a href="/Home/ChiTiet/?id=@it.MaSP">
+                                    <img src="~/Content/img/sanpham/@it.Linkanh"
+                                         alt="" class="img-fluid">
+                                    </a>
+                                    <ul class="featured__item__pic__hover">
+                                   
+                                        <li><a href="~/GioHang/AddtoCart?id=@it.MaSP"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="/Home/ChiTiet/?id=@it.MaSP">@it.TenSP</a></h6>
+                                <h5>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", it.Gia) đ</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+            @using (var con4 = new Model1())
+            {
+                var ds = (from s in con4.Sanphams
+                          where s.MaloaiSP == 4
+                          join anh in con4.SP_anh on s.MaSP equals anh.MaSP
+                          select new
+                          {
+                              s.MaSP,
+                              s.TenSP,
+                              anh.Linkanh,
+                              s.Gia,
+                          }).ToList();
+                foreach (var it in ds)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ">
+                        <div class="featured__item">
+                            <div class="featured__item__pic ">
+                                <a href="/Home/ChiTiet/?id=@it.MaSP">
+                                    <img src="~/Content/img/sanpham/@it.Linkanh" alt=""
+                                         class="img-fluid">
+                                    </a>
+                                    <ul class="featured__item__pic__hover">
+                                   
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="/Home/ChiTiet/?id=@it.MaSP">@it.TenSP</a></h6>
+                                <h5>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", it.Gia) đ</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+
+
+
+
+
+
+
+        </div>
+    </div>
+</section>
+<div class="banner">
+    <div class="container">
+        <div class="row">
+
+            @using (var conn = new Model1())
+            {
+                var slide = (from s in conn.Slide_anh
+                             select s).Take(2);
+                foreach (var it in slide)
+                {
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <a href="#"> <img src="~/Content/img/slide/@it.Linkanh" alt="" class="img-fluid"></a>
+                </div>
+            </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<section class="latest-product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="latest-product__text">
+                    <h4>SẢN PHẨM MỚI NHẤT</h4>
+                    <div class="latest-product__slider owl-carousel">
+
+
+                        @using (var con5 = new Model1())
+                        {
+                            var ds = (from s in con5.Sanphams
+                                      join anh in con5.SP_anh on s.MaSP equals anh.MaSP
+                                      orderby s.NamRaMat descending
+                                      select new
+                                      {
+                                          s.MaSP,
+                                          s.TenSP,
+                                          anh.Linkanh,
+                                          s.NamRaMat,
+                                          s.Gia,
+                                      }).Take(3);
+
+                            <div class="latest-prdouct__slider__item">
+                                @foreach (var item in ds)
+                                {
+                                    <a href="/Home/ChiTiet/?id=@item.MaSP" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                           
+                                                <img src="~/Content/img/sanpham/@item.Linkanh"
+                                                     alt="">
+                                            
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>@item.TenSP</h6>
+                                            <span>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", item.Gia) đ</span>
+                                        </div>
+                                    </a>
+
+                                }
+                            </div>
+
+                            <div class="latest-prdouct__slider__item">
+
+                                @{ List<AnhSPLienKet> ds2 = con5.AnhSPLienKets
+            .SqlQuery("select top 3 * \r\nfrom sanpham s, SP_anh a\r\nwhere s.MaSP=a.MaSP and a.Linkanh Like 'anhchinh%'  and a.masp not in ( \r\nselect top 3 masp \r\nfrom sanpham  )\r\norder by NamRaMat\r\n")
+              .ToList();
+                                    foreach (var it in ds2)
+                                    {
+                                        <a href="/Home/ChiTiet/?id=@it.Masp" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="~/Content/img/sanpham/@it.Linkanh"
+                                                     alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>@it.TenSP</h6>
+                                                <span>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", it.Gia) đ</span>
+                                            </div>
+                                        </a>
+                                    }
+                                }
+
+                            </div>
+                                    }
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="latest-product__text">
+                    <h4>SẢN PHẨM THỊNH HÀNH</h4>
+                    <div class="latest-product__slider owl-carousel">
+
+
+
+                        @using (var con5 = new Model1())
+                        {
+                            var ds = (from s in con5.Sanphams
+                                      join anh in con5.SP_anh on s.MaSP equals anh.MaSP
+                                      where s.hot == true && anh.Linkanh.Contains("anhchinh")
+                                      select new
+                                      {
+                                          s.MaSP,
+                                          s.TenSP,
+                                          anh.Linkanh,
+                                          s.NamRaMat,
+                                          s.Gia,
+                                      }).Take(3);
+
+                            <div class="latest-prdouct__slider__item">
+                                @foreach (var item in ds)
+                                {
+                                    <a href="/Home/ChiTiet/?id=@item.MaSP" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="~/Content/img/sanpham/@item.Linkanh" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>@item.TenSP</h6>
+                                            <span>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", item.Gia) đ</span>
+                                        </div>
+                                    </a>
+
+                                }
+                            </div>
+
+                            <div class="latest-prdouct__slider__item">
+
+                                @{ List<AnhSPLienKet> ds2 = con5.AnhSPLienKets
+                                           .SqlQuery("select top 3 * \r\nfrom sanpham s, SP_anh a\r\nwhere s.hot=1 and  s.MaSP=a.MaSP and a.Linkanh Like 'anhchinh%'  and a.masp not in ( \r\nselect top 3 masp \r\nfrom sanpham  )")
+                                             .ToList();
+                                    foreach (var it in ds2)
+                                    {
+                                        <a href="/Home/ChiTiet/?id=@it.Masp" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="~/Content/img/sanpham/@it.Linkanh"
+                                                     alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>@it.TenSP</h6>
+                                                <span>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", it.Gia) đ</span>
+                                            </div>
+                                        </a>
+                                    }
+                                }
+
+                            </div>
+
+                        }
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="from-blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title from-blog__title">
+                    <h2>Tin Tức nổi bật</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @using (var con6 = new Model1())
+            {
+                var dstt = (from s in con6.Blogs
+                            join tt in con6.Blog_anh on s.MaBLOG equals tt.MaBlog
+                            where tt.Linkanh.Contains("-")
+                            select new
+                            {
+                                s.MaBLOG,
+                                s.TenBlog,
+                                s.ngayviet,
+                                s.Noidung,
+                                tt.Linkanh,
+                            }).Take(3);
+
+                foreach (var it in dstt)
+                {
+                    int dsdg = (from m in con6.Blog_Danhgia
+                                where m.MaBlog == it.MaBLOG
+                                select m).Count();
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="blog__item">
+
+                            <div class="blog__item__pic">
+                                <a href="/Blog/ChiTietTinTuc/@it.MaBLOG">
+                                    <img src="~/Content/img/blog/chinh/@it.Linkanh" alt="">
+                                    </a>
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i> @it.ngayviet</li>
+                                    <li><i class="fa fa-comment-o"></i>@dsdg</li>
+                                </ul>
+                                <h5><a href="/Blog/ChiTietTinTuc/@it.MaBLOG">@it.TenBlog</a></h5>
+                                <p>
+                                    @it.Noidung
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</section>
+
+

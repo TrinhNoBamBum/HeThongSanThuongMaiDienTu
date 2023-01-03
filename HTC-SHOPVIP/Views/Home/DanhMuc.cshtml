@@ -1,0 +1,7 @@
+﻿T 
+@model List<HTC_SHOPVIP.Models.SP_Theloai>
+@foreach (var item in Model)
+{
+    <li> <a href="/Home/TimKiemDanhMuc?id=@item.Maloaisp">@item.tentheloai</a> </li>
+}
+

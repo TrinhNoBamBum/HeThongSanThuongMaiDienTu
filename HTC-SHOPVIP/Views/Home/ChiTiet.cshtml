@@ -1,0 +1,286 @@
+﻿@model  HTC_SHOPVIP.Models.Sanpham
+
+
+@using HTC_SHOPVIP.Models
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int id = ViewBag.id;
+
+ 
+
+}
+
+
+
+
+
+<!-- Breadcrumb Section Begin -->
+<h1>@ViewBag.User</h1>
+<section class="breadcrumb-section set-bg" data-setbg="/Content/img/slide/banner-shopdetail2.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>SMARTPHONE - KHƠI DẬY SỨC SỐNG</h2>
+                    <div class="breadcrumb__option">
+                        <a href="./index.html">Home</a>
+                        <a href="./index.html">Phone</a>
+                        <span>smartphone</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+
+
+            @using (var con = new Model1())
+            {
+                var spc = (from s in con.Sanphams
+                           join anh in con.SP_anh on s.MaSP equals anh.MaSP
+                           where anh.Linkanh.Contains("anhchinh") && s.MaSP == id
+                           select new
+                           {
+
+                               s.MaSP,
+                               s.Pin,
+                               s.Manhinh,
+                               s.NamRaMat,
+                               s.Cam1,
+                               s.Ram,
+                               s.Gia,
+                               s.TenSP,
+                               s.mota,
+                               s.Memory,
+                               anh.Linkanh,
+                           }).FirstOrDefault();
+
+                var spp = (from s in con.Sanphams
+                           join anh in con.SP_anh on s.MaSP equals anh.MaSP
+                           where anh.Linkanh.Contains("anhphu") && s.MaSP == id
+                           select new
+                           {
+                               s.MaSP,
+                               s.Pin,
+                               s.Manhinh,
+                               s.NamRaMat,
+                               s.Cam1,
+                               s.Ram,
+                               s.TenSP,
+                               anh.Linkanh,
+
+
+                           }).ToList();
+
+
+                var spdgbro = (from s in con.SP_Danhgia
+                            where s.MaSP == id
+                            select s).ToList();
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+
+                        <div class="product__details__pic__item user-anhctsp">
+                            <img class="product__details__pic__item--large img-fluid"
+                                 src="~/Content/img/sanpham/@spc.Linkanh" alt=""  >
+                        </div>
+                        <div class="product__details__pic__slider owl-carousel ">
+
+                            @foreach (var it in spp)
+                            {
+                                <div class="box-chitiet">
+                                    <img data-imgbigurl="/Content/img/sanpham/@it.Linkanh"
+                                         src="~/Content/img/sanpham/@it.Linkanh" alt="" class="img-fluid">
+                                </div>
+                            }
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3>@spc.TenSP</h3>
+                        <div class="product__details__rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <span>(@spdgbro.Count() reviews)</span>
+                        </div>
+                        <div class="product__details__price">   @string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", spc.Gia) đ</div>
+
+                        
+                      
+                        <a href="~/GioHang/AddtoCart?id=@spc.MaSP" class="primary-btn">MUA NGAY</a>
+                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <ul>
+                            <li><b>Bộ nhớ</b> <span>@spc.Memory</span></li>
+                            <li><b>RAM</b> <span>@spc.Ram </span></li>
+                            <li><b>Camera</b> <span>@spc.Cam1</span></li>
+                            <li><b>Dung lượng pin</b> <span>@spc.Pin</span></li>
+                            <li>
+                                <b>Share on</b>
+                                <div class="share">
+                                    <a href="https://www.facebook.com/huydao2305"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.facebook.com/huydao2305"><i class="fa fa-twitter"></i></a>
+                                    <a href="https://www.facebook.com/huydao2305"><i class="fa fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/huydao2305"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                   aria-selected="true">Thông tin chi tiết</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                   aria-selected="false">Đánh giá sản phẩm</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    
+                                    <p class="user-motasp">@spc.mota</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h5 id="user-ct">Comment</h5>
+
+
+                                    @using (var con3 = new Model1())
+                                    {
+                                        var spdg = (from s in con3.SP_Danhgia
+                                                    join kh in con3.Khachhangs on s.MaKH equals kh.MaKH
+                                                    where s.MaSP == id
+                                                    select new
+                                                    {
+                                                        s.MaSP,
+                                                        kh.Hoten,
+                                                        s.noidung_danhgia,
+                                                        s.NgayDanhgia,
+
+                                                    }).ToList();
+                                        foreach (var inner in spdg)
+                                        {
+
+                                            <div class="user-cmtsp"><i class="bi bi-person-lines-fill"></i> <span class="user-cmtsp-name">@inner.Hoten</span> <span class="user-cmtsp-time">@inner.NgayDanhgia</span></div>
+                                           
+                                            <div class="alert alert-success user-cmt-contentsp" role="alert"> <i class="bi bi-chat-left-fill"></i> @inner.noidung_danhgia</div>
+
+
+                                        }
+
+                                        
+                                        <i class="bi bi-chat-left-fill"></i>
+                                        <div class="bs-example" data-example-id="textarea-form-control">
+                                            <form action="/Home/Binhluan" method="get">
+                                                <input value="@id" type="hidden" name="id" />
+                                               
+                                                <textarea class="form-control" rows="3" placeholder="Viết bình luận  . . . . ." name="comment"></textarea>
+                                                <input type="submit" value="Bình luận" class="pull-right" />
+                                            </form>
+                                        </div>
+
+
+
+
+                                    }
+
+
+
+
+                                    @*<ul>
+            <li><i class="ace-icon fa fa-users"><span>Nguyễn Duy Trinh</span> </i></li>
+            <li>
+                <i class="ace-icon fa fa-comment"></i> <span>Rất tốt </span>
+            </li>
+        </ul>*@
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            }
+
+
+
+
+
+
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->
+
+<h4 id="user-sptt">Sản phẩm tương tự </h4>
+<section class="categories">
+    <div class="container">
+        <div class="row client-display-sp">
+            <div class="categories__slider owl-carousel">
+                @using (var con1 = new Model1())
+                {
+                    var sp = con1.Sanphams.Find(id);
+
+                    var ds = (from s in con1.Sanphams
+                              join anh in con1.SP_anh on s.MaSP equals anh.MaSP
+                              where anh.anhchinh == true && sp.TenSP.Contains(sp.TenSP)
+                              select new
+                              {
+                                  s.MaSP,
+                                  s.TenSP,
+                                  s.Gia,
+                                  anh.Linkanh,
+                              }
+                            ).ToList().Distinct();
+                    foreach (var it in ds)
+                    {
+                        <div class="col-lg-3 client-col-sp">
+                            <div class="categories_product">
+                                <div class="client-div-chuaanh">
+                                    <img src="~/Content/img/sanpham/chinh/@it.Linkanh"
+                                         alt="" class="img-fluid">
+                                </div>
+                                <h5 class="client-tensp"><a href="/Home/ChiTiet/?id=@it.MaSP">@it.TenSP</a></h5>
+                                <h4>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", it.Gia) vnđ</h4>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Related Product Section Begin -->
+<!-- Related Product Section End -->

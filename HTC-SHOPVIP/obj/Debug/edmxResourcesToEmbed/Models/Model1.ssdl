@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HTTC_ShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="MaBLOG" />
+    </Key>
+    <Property Name="MaBLOG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenBlog" Type="nvarchar" MaxLength="200" />
+    <Property Name="Noidung" Type="nvarchar(max)" />
+    <Property Name="MaTheloai" Type="int" Nullable="false" />
+    <Property Name="ngayviet" Type="date" />
+    <Property Name="tacgia" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Blog_anh">
+    <Key>
+      <PropertyRef Name="MaBlog" />
+    </Key>
+    <Property Name="MaBlog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Linkanh" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Blog_Danhgia">
+    <Key>
+      <PropertyRef Name="MaDanhGia" />
+    </Key>
+    <Property Name="MaDanhGia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoidungDanhgia" Type="nvarchar(max)" />
+    <Property Name="MaBlog" Type="int" Nullable="false" />
+    <Property Name="MaKH" Type="nchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="Blog_Theloai">
+    <Key>
+      <PropertyRef Name="MaTheLoai" />
+    </Key>
+    <Property Name="MaTheLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTheloai" Type="nvarchar" MaxLength="50" />
+    <Property Name="soluong" Type="int" />
+  </EntityType>
+  <EntityType Name="CTDonHang">
+    <Key>
+      <PropertyRef Name="MaDon" />
+    </Key>
+    <Property Name="MaDon" Type="int" Nullable="false" />
+    <Property Name="MaSP" Type="int" Nullable="false" />
+    <Property Name="soluong" Type="int" />
+  </EntityType>
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="MaDon" />
+    </Key>
+    <Property Name="MaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ngaydat" Type="datetime" />
+    <Property Name="Dongia" Type="int" />
+    <Property Name="MaKH" Type="int" Nullable="false" />
+    <Property Name="MaKM" Type="int" Nullable="false" />
+    <Property Name="Tongtien" Type="int" />
+  </EntityType>
+  <EntityType Name="Khachhang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Hoten" Type="nvarchar" MaxLength="50" />
+    <Property Name="username" Type="nchar" MaxLength="50" />
+    <Property Name="matkhau" Type="nchar" MaxLength="50" />
+    <Property Name="sdt" Type="char" MaxLength="10" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="nchar" MaxLength="50" />
+    <Property Name="ngaysinh" Type="date" />
+  </EntityType>
+  <EntityType Name="khuyenmai">
+    <Key>
+      <PropertyRef Name="MaKM" />
+    </Key>
+    <Property Name="MaKM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ngaybatdau" Type="datetime" />
+    <Property Name="Ngayketthuc" Type="datetime" />
+    <Property Name="phantramgiam" Type="int" />
+    <Property Name="Tiengiam" Type="int" />
+    <Property Name="MoTa" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="KM_KH">
+    <Key>
+      <PropertyRef Name="MaKM" />
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKM" Type="int" Nullable="false" />
+    <Property Name="MaKH" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KM_SP">
+    <Key>
+      <PropertyRef Name="MaKM" />
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaKM" Type="int" Nullable="false" />
+    <Property Name="MaSP" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sanpham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenSP" Type="nvarchar" MaxLength="100" />
+    <Property Name="Gia" Type="int" />
+    <Property Name="MaloaiSP" Type="int" Nullable="false" />
+    <Property Name="Sltrongkho" Type="int" />
+    <Property Name="hot" Type="bit" />
+    <Property Name="mota" Type="nvarchar(max)" />
+    <Property Name="trongluong" Type="nchar" MaxLength="10" />
+    <Property Name="Memory" Type="nchar" MaxLength="10" />
+    <Property Name="Cam1" Type="nchar" MaxLength="50" />
+    <Property Name="Cam2" Type="nchar" MaxLength="50" />
+    <Property Name="Ram" Type="nchar" MaxLength="10" />
+    <Property Name="Pin" Type="nchar" MaxLength="10" />
+    <Property Name="Manhinh" Type="nchar" MaxLength="50" />
+    <Property Name="Chip" Type="nchar" MaxLength="100" />
+    <Property Name="NamRaMat" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Slide_anh">
+    <Key>
+      <PropertyRef Name="MaSlide" />
+    </Key>
+    <Property Name="MaSlide" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Linkanh" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="SP_anh">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Linkanh" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="SP_Danhgia">
+    <Key>
+      <PropertyRef Name="Madanhgia_sp" />
+    </Key>
+    <Property Name="Madanhgia_sp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaSP" Type="int" Nullable="false" />
+    <Property Name="noidung_danhgia" Type="nvarchar(max)" />
+    <Property Name="MaKH" Type="int" Nullable="false" />
+    <Property Name="NgayDanhgia" Type="date" />
+    <Property Name="Sao" Type="int" />
+  </EntityType>
+  <EntityType Name="SP_Theloai">
+    <Key>
+      <PropertyRef Name="Maloaisp" />
+    </Key>
+    <Property Name="Maloaisp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tentheloai" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HTTC_Shop.dbo.TaiKhoan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TaiKhoan">
+          <Property Name="tk" Type="nchar" MaxLength="50" />
+          <Property Name="mk" Type="nchar" MaxLength="50" />
+          <Property Name="quyenhan" Type="bit" />
+        </EntityType>-->
+  <Association Name="FK__Blog_anh__MaBlog__412EB0B6">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+    <End Role="Blog_anh" Type="Self.Blog_anh" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="MaBLOG" />
+      </Principal>
+      <Dependent Role="Blog_anh">
+        <PropertyRef Name="MaBlog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTDonHang__MaDon__3A81B327">
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+    <End Role="CTDonHang" Type="Self.CTDonHang" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="MaDon" />
+      </Principal>
+      <Dependent Role="CTDonHang">
+        <PropertyRef Name="MaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTDonHang__MaSP__3B75D760">
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
+    <End Role="CTDonHang" Type="Self.CTDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sanpham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="CTDonHang">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonHang__MaKH__37A5467C">
+    <End Role="Khachhang" Type="Self.Khachhang" Multiplicity="1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khachhang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SP_anh__MaSP__3E52440B">
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
+    <End Role="SP_anh" Type="Self.SP_anh" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sanpham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="SP_anh">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hk1">
+    <End Role="khuyenmai" Type="Self.khuyenmai" Multiplicity="1" />
+    <End Role="KM_KH" Type="Self.KM_KH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khuyenmai">
+        <PropertyRef Name="MaKM" />
+      </Principal>
+      <Dependent Role="KM_KH">
+        <PropertyRef Name="MaKM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hk3">
+    <End Role="khuyenmai" Type="Self.khuyenmai" Multiplicity="1" />
+    <End Role="KM_SP" Type="Self.KM_SP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khuyenmai">
+        <PropertyRef Name="MaKM" />
+      </Principal>
+      <Dependent Role="KM_SP">
+        <PropertyRef Name="MaKM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hk4">
+    <End Role="Khachhang" Type="Self.Khachhang" Multiplicity="1" />
+    <End Role="KM_KH" Type="Self.KM_KH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khachhang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="KM_KH">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hk5">
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
+    <End Role="KM_SP" Type="Self.KM_SP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sanpham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="KM_SP">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_mablogdg">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+    <End Role="Blog_Danhgia" Type="Self.Blog_Danhgia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="MaBLOG" />
+      </Principal>
+      <Dependent Role="Blog_Danhgia">
+        <PropertyRef Name="MaBlog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_maloaisp">
+    <End Role="SP_Theloai" Type="Self.SP_Theloai" Multiplicity="1" />
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SP_Theloai">
+        <PropertyRef Name="Maloaisp" />
+      </Principal>
+      <Dependent Role="Sanpham">
+        <PropertyRef Name="MaloaiSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_masp">
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
+    <End Role="SP_Danhgia" Type="Self.SP_Danhgia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sanpham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="SP_Danhgia">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_matheloai">
+    <End Role="Blog_Theloai" Type="Self.Blog_Theloai" Multiplicity="1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog_Theloai">
+        <PropertyRef Name="MaTheLoai" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="MaTheloai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HTTC_ShopModelStoreContainer">
+    <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blog_anh" EntityType="Self.Blog_anh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blog_Danhgia" EntityType="Self.Blog_Danhgia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blog_Theloai" EntityType="Self.Blog_Theloai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTDonHang" EntityType="Self.CTDonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Khachhang" EntityType="Self.Khachhang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="khuyenmai" EntityType="Self.khuyenmai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KM_KH" EntityType="Self.KM_KH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KM_SP" EntityType="Self.KM_SP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sanpham" EntityType="Self.Sanpham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slide_anh" EntityType="Self.Slide_anh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SP_anh" EntityType="Self.SP_anh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SP_Danhgia" EntityType="Self.SP_Danhgia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SP_Theloai" EntityType="Self.SP_Theloai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Blog_anh__MaBlog__412EB0B6" Association="Self.FK__Blog_anh__MaBlog__412EB0B6">
+      <End Role="Blog" EntitySet="Blog" />
+      <End Role="Blog_anh" EntitySet="Blog_anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTDonHang__MaDon__3A81B327" Association="Self.FK__CTDonHang__MaDon__3A81B327">
+      <End Role="DonHang" EntitySet="DonHang" />
+      <End Role="CTDonHang" EntitySet="CTDonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTDonHang__MaSP__3B75D760" Association="Self.FK__CTDonHang__MaSP__3B75D760">
+      <End Role="Sanpham" EntitySet="Sanpham" />
+      <End Role="CTDonHang" EntitySet="CTDonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonHang__MaKH__37A5467C" Association="Self.FK__DonHang__MaKH__37A5467C">
+      <End Role="Khachhang" EntitySet="Khachhang" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SP_anh__MaSP__3E52440B" Association="Self.FK__SP_anh__MaSP__3E52440B">
+      <End Role="Sanpham" EntitySet="Sanpham" />
+      <End Role="SP_anh" EntitySet="SP_anh" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hk1" Association="Self.fk_hk1">
+      <End Role="khuyenmai" EntitySet="khuyenmai" />
+      <End Role="KM_KH" EntitySet="KM_KH" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hk3" Association="Self.fk_hk3">
+      <End Role="khuyenmai" EntitySet="khuyenmai" />
+      <End Role="KM_SP" EntitySet="KM_SP" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hk4" Association="Self.fk_hk4">
+      <End Role="Khachhang" EntitySet="Khachhang" />
+      <End Role="KM_KH" EntitySet="KM_KH" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hk5" Association="Self.fk_hk5">
+      <End Role="Sanpham" EntitySet="Sanpham" />
+      <End Role="KM_SP" EntitySet="KM_SP" />
+    </AssociationSet>
+    <AssociationSet Name="fk_mablogdg" Association="Self.fk_mablogdg">
+      <End Role="Blog" EntitySet="Blog" />
+      <End Role="Blog_Danhgia" EntitySet="Blog_Danhgia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_maloaisp" Association="Self.fk_maloaisp">
+      <End Role="SP_Theloai" EntitySet="SP_Theloai" />
+      <End Role="Sanpham" EntitySet="Sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="fk_masp" Association="Self.fk_masp">
+      <End Role="Sanpham" EntitySet="Sanpham" />
+      <End Role="SP_Danhgia" EntitySet="SP_Danhgia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_matheloai" Association="Self.fk_matheloai">
+      <End Role="Blog_Theloai" EntitySet="Blog_Theloai" />
+      <End Role="Blog" EntitySet="Blog" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

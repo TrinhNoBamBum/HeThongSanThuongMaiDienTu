@@ -1,0 +1,188 @@
+﻿@using HTC_SHOPVIP.Models
+
+
+
+@{
+    ViewBag.Title = "DSSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+
+
+        <div class="clearfix">
+            <div class="pull-left">
+                <button type="button" class="btn btn-sm btn-primary" onclick="ThemMoiSp()">Thêm mới sản phẩm</button>
+                <script>
+                    function ThemMoiSp() {
+                        location.replace("/Admin/SanPham/ThemSP");
+                    }
+                </script>
+            </div>
+
+
+            <div class="pull-right tableTools-container"></div>
+        </div>
+        <div class="table-header">
+            Danh sách sản phẩm
+        </div>
+
+
+
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+        <div>
+            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center">
+                            <label class="pos-rel">
+                                <input type="checkbox" class="ace" />
+                                <span class="lbl"></span>
+                            </label>
+                        </th>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th class="hidden-480">Hình ảnh</th>
+
+                        <th>
+                            <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                            Số lượng
+                        </th>
+
+
+                        <th>Chỉnh sửa</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @using (var con = new Model1())
+                    {
+                        var list = (from s in con.Sanphams
+                                    
+                                    join anh in con.SP_anh on s.MaSP equals anh.MaSP
+                                    into t
+                                    from SP_anh in t.DefaultIfEmpty()
+                                    where SP_anh.Linkanh.Contains("anhchinh")
+                                    select new
+                                    {
+                                        s.MaSP,
+                                        s.TenSP,
+                                        s.Gia,
+                                        s.trongluong,
+                                        HTC = (SP_anh.Linkanh == null) ? "Chưa có ảnh" : SP_anh.Linkanh,
+                                        s.Sltrongkho,
+                                        s.Memory,
+                                        s.Ram,
+                                        s.Chip,
+                                        s.Cam1,
+                                        s.Manhinh,
+                                        s.NamRaMat,
+                                        s.mota,
+                                        //  
+                                    }).ToList();
+
+                        foreach (var item in list)
+                        {
+                <tr>
+                    <td class="center">
+                        <label class="pos-rel">
+                            <input type="checkbox" class="ace" />
+                            <span class="lbl"></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        @item.MaSP
+                    </td>
+                    <td>@item.TenSP</td>
+
+                    <td class="hidden-480">@item.Gia</td>
+                    <td><img src="~/Content/img/sanpham/@item.HTC" class="img-fluid" width="50"><img /></td>
+
+                    <td class="hidden-480">
+                        <span class="label label-sm label-warning">@item.Sltrongkho</span>
+                    </td>
+
+                    <td>
+                        <div class="hidden-sm hidden-xs action-buttons">
+                            <a href="#" class="green" data-toggle="modal" data-target="#@item.MaSP">
+                                <span class="label label-success label-white middle">Chi tiết</span>
+                            </a>
+
+                            <a class="green" href="~/Admin/SanPham/CapNhat?id=@item.MaSP">
+                                <span class="label label-info label-white middle">  Sửa     </span>
+                            </a>
+
+                            <a class="red" href="~/Admin/SanPham/Xoasp?id=@item.MaSP">
+                                <span class="label label-danger label-white middle">  Xóa  </span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="@item.MaSP" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Chi tiết sản phẩm</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <img src="~/Content/img/sanpham/@item.HTC" style="width:200px; height:200px;" class="img-fluid" />
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li><h3 class="admin-title-sp">Mã sản phẩm : <span class="admin-mota">@item.MaSP</span> </h3></li>
+                                                <li> <h3 class="admin-title-sp" >Tên sản phẩm : <span class="admin-mota">@item.TenSP</span> </h3></li>
+                                                <li> <h3 class="admin-title-sp">Giá sản phẩm : <span class="admin-mota">@item.Gia VND</span> </h3></li>
+                                                <li><h3 class="admin-title-sp">Trọng lượng sản phẩm: <span class="admin-mota">@item.trongluong </span>  </h3></li>
+                                                <li> <h3 class="admin-title-sp">Bộ nhớ : <span class="admin-mota">@item.Memory </span> </h3></li>
+                                                <li> <h3 class="admin-title-sp">RAM: <span class="admin-mota">@item.Ram </span> </h3></li>
+                                                <li> <h3 class="admin-title-sp">Camera : <span class="admin-mota">@item.Cam1 </span> </h3></li>
+                                                <li> <h3 class="admin-title-sp">Màn Hình : <span class="admin-mota">@item.Manhinh </span> </h3></li>
+                                                <li> <h3 class="admin-title-sp">Năm sản xuất : <span class="admin-mota">@item.NamRaMat</span> </h3></li>
+                                                <li> <h3 class="admin-title-sp">Mô tả : <br /><span class="admin-mota">@item.mota </span> </h3></li>
+                                                
+                                            </ul>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@*Model*@
+
+
+
+

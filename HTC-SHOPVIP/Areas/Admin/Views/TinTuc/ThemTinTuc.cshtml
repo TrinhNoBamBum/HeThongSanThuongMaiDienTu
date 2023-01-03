@@ -1,0 +1,75 @@
+﻿@using HTC_SHOPVIP.Models
+@{
+    ViewBag.Title = "ThemTinTuc";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+       
+            <h3 class="tile-title">Thêm Bài Viết</h3>
+            <form  action="/Admin/TinTuc/DonTinTuc" method="get">
+              
+                <div class="row">
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Tiêu đề</label>
+                        <input class="form-control" type="text" name="tieude">
+                    </div>
+
+
+                    <div class="form-group  col-md-3">
+                        <label class="control-label">Thời gian</label>
+                        <input class="form-control" type="datetime-local" name="thoigian">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Tác giả</label>
+                        <input class="form-control" type="text" name="tacgia">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="exampleSelect1" class="control-label">Thể loại</label>
+                        <select class="form-control" id="exampleSelect1" name="theloai">
+                            @using (var con = new Model1())
+                            {
+                                var tl = (from s in con.Blog_Theloai
+                                          select s).ToList();
+
+                                foreach (var it in tl)
+                                {
+                                    <option value="@it.MaTheLoai">@it.TenTheloai</option>
+                                }
+
+
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Tags</label>
+                        <input class="form-control" type="text" name="tags">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Mở đầu</label>
+                        <textarea class="form-control" name="modau" rows="5"></textarea>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Tóm tắt</label>
+                        <textarea class="form-control" name="tomtat" rows="5"></textarea>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Nội dung</label>
+                        <textarea class="form-control" name="noidung" rows="10"></textarea>
+                    </div>
+
+                </div>
+            <button class="user-btn-save" type="submit">Lưu lại</button>
+            <a class="user-btn-close pull-right" href="~/Admin/TinTuc/DSTinTuc">Hủy bỏ</a>
+            </form>
+       
+    </div>
+</div>
+
+

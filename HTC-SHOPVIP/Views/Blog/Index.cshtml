@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using HTC_SHOPVIP.Models
+@model IEnumerable<Blog>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/Content/img/tech.png">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Blog</h2>
+                    <div class="breadcrumb__option">
+                        <a href="~/Home/Index">Trang chủ</a>
+                        <span>Blog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Blog Section Begin -->
+<section class="blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="blog__sidebar">
+                    <div class="blog__sidebar__search">
+                        <form action="/Blog/TimKiem" method="post">
+                            <input type="text" name="txtSearch" onfocus="this.value = '';" onblur="if (this.value == '') { this.value = 'Search'; }" placeholder="Nhập thông tin tìm kiếm">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+                    <div class="blog__sidebar__item">
+                        <h4>Thể loại</h4>
+                        <ul>
+                            @{
+                                var db = new Model1();
+                                foreach (Blog_Theloai it in db.Blog_Theloai.ToList())
+                                {
+                                   
+                                    <li class="NhanVao" data-id="@it.MaTheLoai">@it.TenTheloai (@it.soluong)</li>
+
+                                }
+                            }
+                        </ul>
+
+                    </div>
+                    <style>
+                        li.NhanVao:hover {
+                            color: #7fad39;
+                            cursor: pointer;
+                        }
+
+                        li.NhanVao {
+                            color: #666666;
+                            line-height: 48px;
+                            // margin-bottom: 30px;
+                        }
+
+                        .blog__sidebar__search input {
+                            width: 90%;
+                            height: 46px;
+                            font-size: 16px;
+                            color: #6f6f6f;
+                            padding-left: 15px;
+                            border: 1px solid #e1e1e1;
+                            border-radius: 20px;
+                        }
+                    </style>
+                    <div class="blog__sidebar__item">
+                        <h4>Tin mới</h4>
+                        <div class="blog__sidebar__recent">
+                            @{
+                                var tinmoi = db.Blogs.Where(s => s.MaTheloai == 3).ToList();
+                                foreach (Blog bl in tinmoi)
+                                {
+                                    <a href="/Blog/ChiTietTinTuc/@bl.MaBLOG" class="blog__sidebar__recent__item">
+                                        <div class="blog__sidebar__recent__item__pic">
+                                            @{
+                                                var hinhanh = db.Blog_anh.Find(bl.MaBLOG);
+                                                <img src="@Url.Content("~/Content/img/blog/chinh/" +@hinhanh.Linkanh)" style="height:70px;width:70px">
+                                            }
+                                        </div>
+                                        <div class="blog__sidebar__recent__item__text">
+                                            <h6>@bl.TenBlog</h6>
+                                            <span>@bl.ngayviet</span>
+                                        </div>
+                                    </a>
+                                }
+                            }
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+
+            <div id='dich' class="col-lg-8 col-md-7">
+
+
+            </div>
+            <script>
+                function LoadDsBlog(ChiSoTrang, MaTheLoai, TimKiem) {
+
+                    $.ajax({
+                        type: "GET",// kiểu get/post mà action cần truy cập đến
+                        data://dữ liệu truyền vào cho action,tên biến cần trùng với tên biến trong action
+                        {
+                            pageIndex: ChiSoTrang,
+                            MaTheLoai: MaTheLoai,
+                            ChuoiTimKiem: TimKiem
+                        },
+
+                        url: '/Blog/DsBlog', // ‘/Controller/action’
+
+                        dataType: 'html',
+                        success: function (KetQuaTraVeHam) { // return của hàm sẽ truyền vào cho biến trong hàm này
+                            $('#dich').html(KetQuaTraVeHam);
+
+                        }
+                    });
+                }
+
+                LoadDsBlog(null, null, null);
+
+                $('.NhanVao').click(function () {
+                    var MaTheLoai = $(this).data('id');
+                    LoadDsBlog(null, MaTheLoai, null);
+                })
+
+                $('.icon_search').click(function () {
+                    var TimKiem = $('#TimKiem').val();
+
+                    LoadDsBlog(null, null, TimKiem);
+
+                })
+
+
+            </script>
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->

@@ -1,0 +1,180 @@
+﻿@model HTC_SHOPVIP.Models.Cart
+@using HTC_SHOPVIP.Models;
+@using System.Globalization;
+
+    @{
+        ViewBag.Title = "ShowToCart";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        var kh = Session["khachhang"] as Khachhang;
+    }
+
+    <<!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/Content/img/background-checkout.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Giỏ hàng</h2>
+                        <div class="breadcrumb__option">
+                            <a href="./index.html">Trang chủ</a>
+                            <span>Giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Shoping Cart Section Begin -->
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="/GioHang/Update_Quantity_Cart" method="get">
+
+                        <div class="shoping__cart__table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="shoping__product">Sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Tổng</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @{ int i = 0;}
+                                    @foreach (var item in Model.Items)
+                                    {
+
+
+                                        using (var con1 = new Model1())
+                                        {
+                                            var asp = (from s in con1.Sanphams
+                                                       join anh in con1.SP_anh on s.MaSP equals anh.MaSP
+                                                       where anh.Linkanh.Contains("anhchinh") && s.MaSP == item._shopping_product.MaSP
+                                                       select new
+                                                       {
+                                                           s.MaSP,
+                                                           anh.Linkanh,
+                                                       }).FirstOrDefault();
+
+
+                                            <tr>
+                                                <td class="shoping__cart__item">
+                                                    <img src="~/Content/img/sanpham/@asp.Linkanh" alt="" class="img-fluid" style="width:100px;">
+
+                                                    <h5>@item._shopping_product.TenSP</h5>
+                                                </td>
+                                                <td class="shoping__cart__price">
+                                                    @item._shopping_product.Gia
+                                                </td>
+                                                <td class="shoping__cart__quantity">
+                                                    <input type="hidden" value="@item._shopping_product.MaSP" name="Ma[@i]" />
+                                                    <input type="number" value="@item._shopping_quantity" name="SL[@i]" class="user-quantity">
+
+
+                                                </td>
+                                                <td class="shoping__cart__total">
+                                                    @string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", item._shopping_quantity * item._shopping_product.Gia) đ
+
+                                                </td>
+                                                <td class="shoping__cart__item__close">
+                                                    <a href="/GioHang/RemoveCart?id=@item._shopping_product.MaSP"> <span class="icon_close"></span></a>
+
+                                                </td>
+                                            </tr>
+                                            i = i + 1;
+                                        }
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+                            <div class="pull-left cn-tt">
+                                <a href="~/Home/Index" class="shopping-continue">Tiếp tục mua sắm</a>
+                            </div>
+                            <div class="pull-right cn-tt"> <input type="submit" name="Update Quantity" value="cập nhật" class="shopping-continue" /></div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <div class="shoping__checkout">
+                        <ul>
+                            @{double tkm = 0;
+                                double ptgg1 = 0;
+                            }
+                            @foreach (var it in Model.Items)
+                            {
+                                using (var conk = new Model1())
+                                {
+                                    int magg = (from s in conk.KM_SPs
+                                                where s.MaSP == it._shopping_product.MaSP
+                                                select s.MaKM).FirstOrDefault();
+                                    double giasp = (double)(from s in conk.Sanphams
+                                                            where s.MaSP == it._shopping_product.MaSP
+                                                            select s.Gia).FirstOrDefault();
+                                    var ptgg = (from s in conk.khuyenmais
+                                                where s.MaKM == magg
+                                                select s.phantramgiam).FirstOrDefault();
+                                    if (ptgg != null)
+                                    {
+                                        ptgg1 = (double)ptgg;
+                                    }
+                                    else
+                                    {
+                                        ptgg1 = 0;
+                                    }
+
+                                    tkm = tkm + ((ptgg1 / 100) * giasp * it._shopping_quantity);
+
+
+
+                                }
+                            }
+                            <li>Tổng tiền : <span>  @string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", Model.Total_Money())  đ</span></li>
+                            <li>Tiền giảm giá : <span> @string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", tkm) đ</span> </li>
+                            <li>Cần thanh toán : <span>@string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", Model.Total_Money() - tkm) đ</span></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__continue">
+
+
+                        @{ double ttskg = Model.Total_Money() - tkm;}
+                        @using (Html.BeginForm("CheckOut", "GioHang"))
+                        {
+
+                         
+                            <input type="hidden"  placeholder="Nhập mã khách hàng" name="tongtien" value="@ttskg" />
+                            <br />
+                            <label id="shoping__continue-lb2 " class="email-user">Địa chỉ email: </label>
+                            <input type="text"placeholder="Nhập mã khách hàng" id="email-user-input" name="CodeCustomer" value="@kh.email" readonly />
+                            <br />
+                            <label id="shoping__continue-lb3">Địa chỉ nhận hàng: </label>
+                            <input type="text" placeholder="Nhập địa chỉ nhận hàng" name="Address_Delivery" />
+                            <br />
+                            <input type="hidden" value="Chờ xét duyệt" name="status" />
+                            <br />
+                            <button type="submit" class="primary-btn">
+                                Hoàn thành
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shoping Cart Section End -->

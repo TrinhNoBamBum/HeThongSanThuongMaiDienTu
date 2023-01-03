@@ -1,0 +1,940 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{075E7829-E4AB-4CDF-9463-D24C8B079C85}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HTC_SHOPVIP</RootNamespace>
+    <AssemblyName>HTC-SHOPVIP</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44364</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\QuyenNhanVien.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TinTucController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnhSPLienKet.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\Blog_anh.cs" />
+    <Compile Include="Models\Blog_Danhgia.cs" />
+    <Compile Include="Models\Blog_Theloai.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\ChucNang.cs" />
+    <Compile Include="Models\CTDonHang.cs" />
+    <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\HangSanXuat.cs" />
+    <Compile Include="Models\Khachhang.cs" />
+    <Compile Include="Models\khuyenmai.cs" />
+    <Compile Include="Models\KM_SP.cs" />
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\PhanQuyen.cs" />
+    <Compile Include="Models\Sanpham.cs" />
+    <Compile Include="Models\Slide_anh.cs" />
+    <Compile Include="Models\SP_anh.cs" />
+    <Compile Include="Models\SP_Danhgia.cs" />
+    <Compile Include="Models\SP_Theloai.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Assets\css\ace-ie.min.css" />
+    <Content Include="Areas\Admin\Assets\css\ace-part2.min.css" />
+    <Content Include="Areas\Admin\Assets\css\ace-rtl.min.css" />
+    <Content Include="Areas\Admin\Assets\css\ace-skins.min.css" />
+    <Content Include="Areas\Admin\Assets\css\ace.min.css" />
+    <Content Include="Areas\Admin\Assets\css\bootstrap-colorpicker.min.css" />
+    <Content Include="Areas\Admin\Assets\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Areas\Admin\Assets\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Areas\Admin\Assets\css\bootstrap-duallistbox.min.css" />
+    <Content Include="Areas\Admin\Assets\css\bootstrap-editable.min.css" />
+    <Content Include="Areas\Admin\Assets\css\bootstrap-multiselect.min.css" />
+    <Content Include="Areas\Admin\Assets\css\bootstrap-timepicker.min.css" />
+    <Content Include="Areas\Admin\Assets\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Assets\css\chosen.min.css" />
+    <Content Include="Areas\Admin\Assets\css\colorbox.min.css" />
+    <Content Include="Areas\Admin\Assets\css\daterangepicker.min.css" />
+    <Content Include="Areas\Admin\Assets\css\dropzone.min.css" />
+    <Content Include="Areas\Admin\Assets\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\Assets\css\fonts.googleapis.com.css" />
+    <Content Include="Areas\Admin\Assets\css\fullcalendar.min.css" />
+    <Content Include="Areas\Admin\Assets\css\images\meteorshower2.jpg" />
+    <Content Include="Areas\Admin\Assets\css\images\pattern.jpg" />
+    <Content Include="Areas\Admin\Assets\css\jquery-ui.custom.min.css" />
+    <Content Include="Areas\Admin\Assets\css\jquery-ui.min.css" />
+    <Content Include="Areas\Admin\Assets\css\jquery.gritter.min.css" />
+    <Content Include="Areas\Admin\Assets\css\prettify.min.css" />
+    <Content Include="Areas\Admin\Assets\css\select2.min.css" />
+    <Content Include="Areas\Admin\Assets\css\StyleAdmin.css" />
+    <Content Include="Areas\Admin\Assets\css\ui.jqgrid.min.css" />
+    <Content Include="Areas\Admin\Assets\font-awesome\4.5.0\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\Assets\font-awesome\4.5.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\Admin\Assets\images\avatars\avatar.png" />
+    <Content Include="Areas\Admin\Assets\images\avatars\avatar1.png" />
+    <Content Include="Areas\Admin\Assets\images\avatars\avatar2.png" />
+    <Content Include="Areas\Admin\Assets\images\avatars\avatar3.png" />
+    <Content Include="Areas\Admin\Assets\images\avatars\avatar4.png" />
+    <Content Include="Areas\Admin\Assets\images\avatars\avatar5.png" />
+    <Content Include="Areas\Admin\Assets\images\avatars\profile-pic.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatars\user.jpg" />
+    <Content Include="Areas\Admin\Assets\images\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="Areas\Admin\Assets\images\bootstrap-colorpicker\alpha.png" />
+    <Content Include="Areas\Admin\Assets\images\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="Areas\Admin\Assets\images\bootstrap-colorpicker\hue.png" />
+    <Content Include="Areas\Admin\Assets\images\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Areas\Admin\Assets\images\email\email1.png" />
+    <Content Include="Areas\Admin\Assets\images\email\email2.png" />
+    <Content Include="Areas\Admin\Assets\images\email\email3.png" />
+    <Content Include="Areas\Admin\Assets\images\email\email4.png" />
+    <Content Include="Areas\Admin\Assets\images\gallery\image-1.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\image-2.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\image-3.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\image-4.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\image-5.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\image-6.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\thumb-1.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\thumb-2.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\thumb-3.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\thumb-4.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\thumb-5.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\thumb-6.jpg" />
+    <Content Include="Areas\Admin\Assets\images\placeholder\165x90.png" />
+    <Content Include="Areas\Admin\Assets\images\placeholder\255x150.png" />
+    <Content Include="Areas\Admin\Assets\images\placeholder\530x270.png" />
+    <Content Include="Areas\Admin\Assets\images\placeholder\550x280.png" />
+    <Content Include="Areas\Admin\Assets\js\ace-editable.min.js" />
+    <Content Include="Areas\Admin\Assets\js\ace-elements.min.js" />
+    <Content Include="Areas\Admin\Assets\js\ace-extra.min.js" />
+    <Content Include="Areas\Admin\Assets\js\ace.min.js" />
+    <Content Include="Areas\Admin\Assets\js\autosize.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootbox.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-colorpicker.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-datepicker.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-editable.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-markdown.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-multiselect.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-tag.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-timepicker.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap-wysiwyg.min.js" />
+    <Content Include="Areas\Admin\Assets\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Assets\js\buttons.colVis.min.js" />
+    <Content Include="Areas\Admin\Assets\js\buttons.flash.min.js" />
+    <Content Include="Areas\Admin\Assets\js\buttons.html5.min.js" />
+    <Content Include="Areas\Admin\Assets\js\buttons.print.min.js" />
+    <Content Include="Areas\Admin\Assets\js\chosen.jquery.min.js" />
+    <Content Include="Areas\Admin\Assets\js\dataTables.buttons.min.js" />
+    <Content Include="Areas\Admin\Assets\js\dataTables.select.min.js" />
+    <Content Include="Areas\Admin\Assets\js\daterangepicker.min.js" />
+    <Content Include="Areas\Admin\Assets\js\dropzone.min.js" />
+    <Content Include="Areas\Admin\Assets\js\excanvas.min.js" />
+    <Content Include="Areas\Admin\Assets\js\fullcalendar.min.js" />
+    <Content Include="Areas\Admin\Assets\js\grid.locale-en.js" />
+    <Content Include="Areas\Admin\Assets\js\holder.min.js" />
+    <Content Include="Areas\Admin\Assets\js\html5shiv.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery-1.11.3.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery-2.1.4.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery-additional-methods.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery-typeahead.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery-ui.custom.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery-ui.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.bootstrap-duallistbox.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.colorbox.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.dataTables.bootstrap.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.easypiechart.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.flot.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.flot.pie.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.flot.resize.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.gritter.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.hotkeys.index.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.inputlimiter.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.jqGrid.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.knob.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.maskedinput.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.mobile.custom.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.nestable.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.raty.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.sparkline.index.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="Areas\Admin\Assets\js\jquery.validate.min.js" />
+    <Content Include="Areas\Admin\Assets\js\markdown.min.js" />
+    <Content Include="Areas\Admin\Assets\js\moment.min.js" />
+    <Content Include="Areas\Admin\Assets\js\prettify.min.js" />
+    <Content Include="Areas\Admin\Assets\js\respond.min.js" />
+    <Content Include="Areas\Admin\Assets\js\select2.min.js" />
+    <Content Include="Areas\Admin\Assets\js\spin.js" />
+    <Content Include="Areas\Admin\Assets\js\spinbox.min.js" />
+    <Content Include="Areas\Admin\Assets\js\tree.min.js" />
+    <Content Include="Areas\Admin\Assets\js\wizard.min.js" />
+    <Content Include="Areas\Admin\Assets\swf\flashExport.swf" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\elegant-icons.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\jquery-ui.min.css" />
+    <Content Include="Content\login-style.css" />
+    <Content Include="Content\css\nice-select.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\slicknav.min.css" />
+    <Content Include="Content\img\ANHBIA2.png" />
+    <Content Include="Content\img\background-checkout.png" />
+    <Content Include="Content\img\background.png" />
+    <Content Include="Content\img\blog\chinh\iphon14-2.png" />
+    <Content Include="Content\img\blog\chinh\lap-blog.png" />
+    <Content Include="Content\img\blog\chinh\loyalty1.png" />
+    <Content Include="Content\img\blog\chinh\microsoft-todo.png" />
+    <Content Include="Content\img\blog\chinh\salett.png" />
+    <Content Include="Content\img\blog\chinh\tvos.png" />
+    <Content Include="Content\img\blog\chinh\vivo-v25-chinh-thuc-ra-3.png" />
+    <Content Include="Content\img\blog\chinh\vivo.png" />
+    <Content Include="Content\img\blog\phu\1305_top-laptop-mong-nhe-2.jpg" />
+    <Content Include="Content\img\blog\phu\banner2.jpg" />
+    <Content Include="Content\img\blog\phu\image-21.png" />
+    <Content Include="Content\img\blog\phu\Tin3.png" />
+    <Content Include="Content\img\blog\phu\tin6.jpg" />
+    <Content Include="Content\img\blog\phu\tin8.png" />
+    <Content Include="Content\img\blog\phu\v25-blog.jpg" />
+    <Content Include="Content\img\blog\phu\vivo-x80.jpg" />
+    <Content Include="Content\img\blog\user.png" />
+    <Content Include="Content\img\breadcrumb.jpg" />
+    <Content Include="Content\img\engineer vs scientist.png" />
+    <Content Include="Content\img\img\ANHBIA2.png" />
+    <Content Include="Content\img\img\background-checkout.png" />
+    <Content Include="Content\img\img\background.png" />
+    <Content Include="Content\img\img\blog\chinh\iphon14-2.png" />
+    <Content Include="Content\img\img\blog\chinh\lap-blog.png" />
+    <Content Include="Content\img\img\blog\chinh\loyalty1.png" />
+    <Content Include="Content\img\img\blog\chinh\microsoft-todo.png" />
+    <Content Include="Content\img\img\blog\chinh\salett.png" />
+    <Content Include="Content\img\img\blog\chinh\tvos.png" />
+    <Content Include="Content\img\img\blog\chinh\vivo-v25-chinh-thuc-ra-3.png" />
+    <Content Include="Content\img\img\blog\chinh\vivo.png" />
+    <Content Include="Content\img\img\blog\phu\1305_top-laptop-mong-nhe-2.jpg" />
+    <Content Include="Content\img\img\blog\phu\banner2.jpg" />
+    <Content Include="Content\img\img\blog\phu\image-21.png" />
+    <Content Include="Content\img\img\blog\phu\Tin3.png" />
+    <Content Include="Content\img\img\blog\phu\tin6.jpg" />
+    <Content Include="Content\img\img\blog\phu\tin8.png" />
+    <Content Include="Content\img\img\blog\phu\v25-blog.jpg" />
+    <Content Include="Content\img\img\blog\phu\vivo-x80.jpg" />
+    <Content Include="Content\img\img\blog\user.png" />
+    <Content Include="Content\img\img\breadcrumb.jpg" />
+    <Content Include="Content\img\img\engineer vs scientist.png" />
+    <Content Include="Content\img\img\language.png" />
+    <Content Include="Content\img\img\log.svg" />
+    <Content Include="Content\img\img\logohttc.jpg" />
+    <Content Include="Content\img\img\payment.png" />
+    <Content Include="Content\img\img\register.svg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_10.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_11.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_12.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_13.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_14.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_15.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_16.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_17.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_18.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_19.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_2.png" />
+    <Content Include="Content\img\img\sanpham\anhchinh_20.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_3.png" />
+    <Content Include="Content\img\img\sanpham\anhchinh_4.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_5.png" />
+    <Content Include="Content\img\img\sanpham\anhchinh_6.png" />
+    <Content Include="Content\img\img\sanpham\anhchinh_7.png" />
+    <Content Include="Content\img\img\sanpham\anhchinh_8.jpg" />
+    <Content Include="Content\img\img\sanpham\anhchinh_9.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_1-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_1-2.png" />
+    <Content Include="Content\img\img\sanpham\anhphu_1-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_1-4.png" />
+    <Content Include="Content\img\img\sanpham\anhphu_10-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_10-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_10-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_10-4.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_11-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_11-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_11-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_11-4.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_12-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_12-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_12-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_13-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_13-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_13-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_14-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_14-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_15-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_15-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_15-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_16-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_16-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_16-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_17-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_17-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_17-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_18-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_18-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_19-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_19-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_2-1.png" />
+    <Content Include="Content\img\img\sanpham\anhphu_2-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_2-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_2-4.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_20-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_20-2.png" />
+    <Content Include="Content\img\img\sanpham\anhphu_3-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_3-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_3-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_3-4.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_3-5.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_4-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_4-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_4-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_4-4.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_5-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_5-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_5-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_5-4.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_6-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_6-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_6-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_6-4.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_7-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_7-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_7-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_8-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_8-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_8-3.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_9-1.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_9-2.jpg" />
+    <Content Include="Content\img\img\sanpham\anhphu_9-3.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_1.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_10.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_11.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_12.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_13.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_14.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_15.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_16.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_17.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_18.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_19.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_2.png" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_20.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_3.png" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_4.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_5.png" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_6.png" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_7.png" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_8.jpg" />
+    <Content Include="Content\img\img\sanpham\chinh\anhchinh_9.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_1-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_1-2.png" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_1-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_1-4.png" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_10-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_10-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_10-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_10-4.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_11-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_11-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_11-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_11-4.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_12-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_12-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_12-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_13-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_13-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_13-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_14-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_14-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_15-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_15-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_15-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_16-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_16-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_16-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_17-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_17-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_17-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_18-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_18-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_19-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_19-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_2-1.png" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_2-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_2-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_2-4.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_20-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_20-2.png" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_3-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_3-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_3-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_3-4.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_3-5.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_4-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_4-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_4-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_4-4.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_5-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_5-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_5-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_5-4.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_6-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_6-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_6-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_6-4.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_7-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_7-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_7-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_8-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_8-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_8-3.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_9-1.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_9-2.jpg" />
+    <Content Include="Content\img\img\sanpham\phu\anhphu_9-3.jpg" />
+    <Content Include="Content\img\img\slide\anhslidechinh.png" />
+    <Content Include="Content\img\img\slide\baner3.jpg" />
+    <Content Include="Content\img\img\slide\banner-oppo.jpg" />
+    <Content Include="Content\img\img\slide\banner-shopdetail.jpg" />
+    <Content Include="Content\img\img\slide\banner-shopdetail1.jpg" />
+    <Content Include="Content\img\img\slide\banner-shopdetail2.jpg" />
+    <Content Include="Content\img\img\slide\banner-test.jpg" />
+    <Content Include="Content\img\img\slide\banner.png" />
+    <Content Include="Content\img\img\slide\banner2.jpg" />
+    <Content Include="Content\img\img\slide\banner4.jpg" />
+    <Content Include="Content\img\img\slide\banner5.jpg" />
+    <Content Include="Content\img\img\slide\banner6.jpg" />
+    <Content Include="Content\img\img\slide\banner7.png" />
+    <Content Include="Content\img\img\slide\bannervip-2.png" />
+    <Content Include="Content\img\img\slide\bannervip-3.png" />
+    <Content Include="Content\img\img\slide\bannervip-4.png" />
+    <Content Include="Content\img\img\slide\bannervip-5.png" />
+    <Content Include="Content\img\img\slide\bannervip-6.png" />
+    <Content Include="Content\img\img\slide\subbanner1.png" />
+    <Content Include="Content\img\img\slide\subbanner2.png" />
+    <Content Include="Content\img\img\tech.png" />
+    <Content Include="Content\img\img\vietnam %281%29.png" />
+    <Content Include="Content\img\img\z3751877936649_841177e8c22d2c5df201ad458726a786.jpg" />
+    <Content Include="Content\img\language.png" />
+    <Content Include="Content\img\log.svg" />
+    <Content Include="Content\img\logohttc.jpg" />
+    <Content Include="Content\img\payment.png" />
+    <Content Include="Content\img\register.svg" />
+    <Content Include="Content\img\sanpham\anhchinh2-0.png" />
+    <Content Include="Content\img\sanpham\anhchinh_1.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_10.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_11.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_12.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_13.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_14.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_15.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_16.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_17.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_18.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_19.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_2.png" />
+    <Content Include="Content\img\sanpham\anhchinh_20.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_3.png" />
+    <Content Include="Content\img\sanpham\anhchinh_4.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_5.png" />
+    <Content Include="Content\img\sanpham\anhchinh_6.png" />
+    <Content Include="Content\img\sanpham\anhchinh_7.png" />
+    <Content Include="Content\img\sanpham\anhchinh_8.jpg" />
+    <Content Include="Content\img\sanpham\anhchinh_9.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_1-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_1-2.png" />
+    <Content Include="Content\img\sanpham\anhphu_1-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_1-4.png" />
+    <Content Include="Content\img\sanpham\anhphu_10-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_10-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_10-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_10-4.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_11-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_11-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_11-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_11-4.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_12-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_12-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_12-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_13-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_13-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_13-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_14-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_14-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_15-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_15-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_15-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_16-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_16-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_16-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_17-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_17-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_17-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_18-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_18-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_19-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_19-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_2-1.png" />
+    <Content Include="Content\img\sanpham\anhphu_2-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_2-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_2-4.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_20-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_20-2.png" />
+    <Content Include="Content\img\sanpham\anhphu_3-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_3-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_3-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_3-4.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_3-5.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_4-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_4-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_4-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_4-4.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_5-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_5-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_5-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_5-4.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_6-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_6-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_6-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_6-4.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_7-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_7-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_7-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_8-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_8-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_8-3.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_9-1.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_9-2.jpg" />
+    <Content Include="Content\img\sanpham\anhphu_9-3.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh2-0.png" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_1.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_10.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_11.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_12.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_13.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_14.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_15.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_16.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_17.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_18.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_19.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_2.png" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_20.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_3.png" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_4.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_5.png" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_6.png" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_7.png" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_8.jpg" />
+    <Content Include="Content\img\sanpham\chinh\anhchinh_9.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_1-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_1-2.png" />
+    <Content Include="Content\img\sanpham\phu\anhphu_1-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_1-4.png" />
+    <Content Include="Content\img\sanpham\phu\anhphu_10-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_10-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_10-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_10-4.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_11-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_11-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_11-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_11-4.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_12-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_12-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_12-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_13-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_13-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_13-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_14-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_14-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_15-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_15-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_15-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_16-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_16-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_16-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_17-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_17-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_17-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_18-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_18-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_19-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_19-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_2-1.png" />
+    <Content Include="Content\img\sanpham\phu\anhphu_2-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_2-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_2-4.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_20-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_20-2.png" />
+    <Content Include="Content\img\sanpham\phu\anhphu_3-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_3-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_3-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_3-4.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_3-5.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_4-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_4-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_4-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_4-4.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_5-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_5-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_5-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_5-4.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_6-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_6-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_6-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_6-4.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_7-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_7-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_7-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_8-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_8-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_8-3.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_9-1.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_9-2.jpg" />
+    <Content Include="Content\img\sanpham\phu\anhphu_9-3.jpg" />
+    <Content Include="Content\img\slide\anhslidechinh.png" />
+    <Content Include="Content\img\slide\baner3.jpg" />
+    <Content Include="Content\img\slide\banner-oppo.jpg" />
+    <Content Include="Content\img\slide\banner-shopdetail.jpg" />
+    <Content Include="Content\img\slide\banner-shopdetail1.jpg" />
+    <Content Include="Content\img\slide\banner-shopdetail2.jpg" />
+    <Content Include="Content\img\slide\banner-test.jpg" />
+    <Content Include="Content\img\slide\banner.png" />
+    <Content Include="Content\img\slide\banner2.jpg" />
+    <Content Include="Content\img\slide\banner4.jpg" />
+    <Content Include="Content\img\slide\banner5.jpg" />
+    <Content Include="Content\img\slide\banner6.jpg" />
+    <Content Include="Content\img\slide\banner7.png" />
+    <Content Include="Content\img\slide\bannervip-2.png" />
+    <Content Include="Content\img\slide\bannervip-3.png" />
+    <Content Include="Content\img\slide\bannervip-4.png" />
+    <Content Include="Content\img\slide\bannervip-5.png" />
+    <Content Include="Content\img\slide\bannervip-6.png" />
+    <Content Include="Content\img\slide\subbanner1.png" />
+    <Content Include="Content\img\slide\subbanner2.png" />
+    <Content Include="Content\img\tech.png" />
+    <Content Include="Content\img\vietnam %281%29.png" />
+    <Content Include="Content\img\z3751877936649_841177e8c22d2c5df201ad458726a786.jpg" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\fonts\ElegantIcons.svg" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\js\jquery-ui.min.js" />
+    <Content Include="Content\js\jquery.nice-select.min.js" />
+    <Content Include="Content\js\jquery.slicknav.js" />
+    <Content Include="Content\js\login-app.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\mixitup.min.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\fonts\ElegantIcons.eot" />
+    <Content Include="Content\fonts\ElegantIcons.ttf" />
+    <Content Include="Content\fonts\ElegantIcons.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\sass\style.scss" />
+    <Content Include="Content\sass\_base.scss" />
+    <Content Include="Content\sass\_blog-details.scss" />
+    <Content Include="Content\sass\_blog-sidebar.scss" />
+    <Content Include="Content\sass\_blog.scss" />
+    <Content Include="Content\sass\_breadcrumb.scss" />
+    <Content Include="Content\sass\_checkout.scss" />
+    <Content Include="Content\sass\_contact.scss" />
+    <Content Include="Content\sass\_footer.scss" />
+    <Content Include="Content\sass\_header.scss" />
+    <Content Include="Content\sass\_hero.scss" />
+    <Content Include="Content\sass\_home-page.scss" />
+    <Content Include="Content\sass\_mixins.scss" />
+    <Content Include="Content\sass\_responsive.scss" />
+    <Content Include="Content\sass\_shop-details.scss" />
+    <Content Include="Content\sass\_shop-grid.scss" />
+    <Content Include="Content\sass\_shoping-cart.scss" />
+    <Content Include="Content\sass\_sidebar.scss" />
+    <Content Include="Content\sass\_variable.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\DSSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\ThemSP.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DSDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\DSKhachHang.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTuc\DSTinTuc.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTuc\ThemTinTuc.cshtml" />
+    <Content Include="Areas\Admin\Assets\font-awesome\4.5.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Assets\font-awesome\4.5.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\Assets\font-awesome\4.5.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\Assets\font-awesome\4.5.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Admin\Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\Admin\Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Admin\Assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\Views\SanPham\CapNhat.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTuc\HinhAnh.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTuc\AnhSlide.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTuc\AnhSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTuc\AnhBlog.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\DanhSachTaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\TimKiemTenTaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTuc\CapNhat.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\BaoLoi.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\AdminLoginView.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\DSNhanVien.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\ViewThemNhanVien.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\ViewCapNhat.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\testAPI.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\ChiTietTinTuc.cshtml" />
+    <Content Include="Views\GioHang\ShowToCart.cshtml" />
+    <Content Include="Views\Home\DanhMuc.cshtml" />
+    <Content Include="Views\Home\ChiTiet.cshtml" />
+    <Content Include="Web.Config" />
+    <Content Include="Views\GioHang\BagCart.cshtml" />
+    <Content Include="Views\GioHang\Shopping_Success.cshtml" />
+    <Content Include="Views\Home\TimKiem.cshtml" />
+    <Content Include="Views\Home\TimKiemDanhMuc.cshtml" />
+    <Content Include="Views\Home\LoginView.cshtml" />
+    <Content Include="Views\Blog\DsBlog.cshtml" />
+    <Content Include="Views\GioHang\ChuaDangNhap.cshtml" />
+    <None Include="Web.Debug.Config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
+    <None Include="Web.Release.Config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58889</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44364/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

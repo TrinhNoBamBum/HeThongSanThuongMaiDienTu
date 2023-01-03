@@ -1,0 +1,93 @@
+﻿.user-btn-save {
+    background-color: #438EB9;
+    border:none;
+    padding:10px 15px;
+    opacity:0.9;
+    color:#fff;
+    margin-left:200px;
+}
+.user-btn-save:hover {
+    background-color: aqua;
+    color:#000;
+}
+
+.user-btn-close {
+    background-color: #438EB9;
+    border: none;
+    padding: 10px 15px;
+    opacity: 0.9;
+    color: #fff;
+    margin-right:200px;
+    
+}
+    .user-btn-close:hover {
+        background-color: aqua;
+        color: #000;
+        text-decoration: none;
+    }
+.admin-status {
+    background: #f0ad4e;
+    font-size:14px;
+    padding: 2px 4px;
+    color: #000;
+}
+.admin-padding {
+    padding-right:50px;
+}
+
+.admin-upload {
+    padding:0;
+}
+#themanh {
+    display: block;
+    padding: 20px 5px;
+    background: aqua;
+    width: 80px;
+}
+#btn-ok {
+    display: inline-block;
+    background: #9ABC32;
+    padding: 20px 30px;
+    color:#fff;
+    border: none;
+}
+#myfile {
+    background:aqua;
+    padding:20px 20px;
+    margin-bottom:5px;
+    display:block;
+}
+
+#admin-thongbao{
+    color:red;
+}
+
+
+.tile {
+    margin-right:50px;
+}
+
+.admin-css-vip3{
+    background:red !important;
+}
+
+.admin-title-sp {
+    font-size :18px;
+    font-weight:700;
+    color:#000;
+}
+.admin-mota {
+    font-size: 14px;
+    color: #4a4a4a;
+}
+.admin-table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.admin-table tr, admin-table tr th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }

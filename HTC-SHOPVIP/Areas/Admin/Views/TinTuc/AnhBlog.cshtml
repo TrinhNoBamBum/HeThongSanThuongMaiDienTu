@@ -1,0 +1,152 @@
+﻿
+@using HTC_SHOPVIP.Models
+@{
+    ViewBag.Title = "AnhBlog";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h3 class="header smaller lighter blue">Ảnh Tin Tức</h3>
+<form action="/Admin/TinTuc/ThemAnhBlog"  method="post">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-3">
+                <input type="file" id="myfile" name="maanhbl">
+            </div>
+            <div class="col-lg-2">
+                <label for="exampleSelect1" class="control-label">Mã sản phẩm</label>
+                <select name="maspblog" class="form-control" id="exampleSelect1">
+                    @using (var con = new Model1())
+                    {
+                        var maspp = (from s in con.Blogs
+                                     select s).ToList();
+
+                        foreach (var item in maspp)
+                        {
+                            <option value="@item.MaBLOG">@item.TenBlog</option>
+                        }
+                    }
+
+                </select>
+            </div class="col-lg-2">
+            <div class="col-lg-4"> <button type="submit" id="btn-ok"> Submit</button></div>
+        </div>
+    </div>
+ 
+
+   
+</form>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12 admin-padding">
+
+
+
+
+            <div class="clearfix">
+
+                <div class="pull-right tableTools-container"></div>
+            </div>
+
+
+            <!-- div.table-responsive -->
+            <!-- div.dataTables_borderWrap -->
+            <div>
+                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            <th>Mã tin tức</th>
+                            <th>Hình ảnh </th>
+
+                            <th>Chỉnh sửa</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @using (var con = new Model1())
+                        {
+                            var db = (from s in con.Blog_anh
+                                      select s).ToList();
+                            foreach (var item in db)
+                            {
+                                <tr>
+
+                                    <td class="center">
+                                        <label class="pos-rel">
+                                            <input type="checkbox" class="ace" />
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        @item.MaBlog
+                                    </td>
+                                    <td> <img src="~/Content/img/blog/chinh/@item.Linkanh" class="img-fluid" width="600"><img /> </td>
+
+
+                                    <td>
+                                        <div class="hidden-sm hidden-xs action-buttons">
+                                          
+
+                                            <a class="red" href="~/Admin/TinTuc/XoaAnhBlog?mablog=@item.MaBlog&&linkanh=@item.Linkanh">
+                                                <span class="label label-danger label-white middle">  Xóa  </span>
+                                            </a>
+                                        </div>
+
+                                        <div class="hidden-md hidden-lg">
+                                            <div class="inline pos-rel">
+                                                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                    <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                                </button>
+
+                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                    <li>
+                                                        <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+                                                            <span class="blue">
+                                                                <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                            <span class="green">
+                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                            <span class="red">
+                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

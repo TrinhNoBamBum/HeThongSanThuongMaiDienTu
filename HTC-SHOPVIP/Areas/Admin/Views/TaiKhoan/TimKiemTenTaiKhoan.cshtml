@@ -1,0 +1,104 @@
+﻿@model List<HTC_SHOPVIP.Models.TaiKhoan>
+@{
+    ViewBag.Title = "TimKiemTenTaiKhoan";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+
+<div class="table-header">
+    Danh sách Tài Khoản
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+
+
+        <div class="clearfix">
+            <div class="pull-right tableTools-container"></div>
+        </div>
+        <form action="/Admin/TaiKhoan/TimKiemTenTaiKhoan">
+            <input name="tentaikhoan" value="Tìm Kiếm" class="admin-timkiem" />
+            <button class="admin-btn-timkiem" type="submit">Tìm kiếm</button>
+        </form>
+
+
+      <p id="admin-thongbao">@ViewBag.thongbao</p>
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+        <div>
+            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center">
+                            <label class="pos-rel">
+                                <input type="checkbox" class="ace" />
+                                <span class="lbl"></span>
+                            </label>
+                        </th>
+                        <th>Tên tài khoản</th>
+                        <th>Mật Khẩu</th>
+
+                        <th class="hidden-480">Quyền hạn</th>
+
+                        <th>Chỉnh sửa</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+             
+                     
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="center">
+                                    <label class="pos-rel">
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+
+                                <td>
+                                    @item.tk
+                                </td>
+                                <td>@item.mk</td>
+
+                                <td class="hidden-480">@item.quyenhan</td>
+
+
+
+                                <td>
+                                    <div class="hidden-sm hidden-xs action-buttons">
+
+
+                                        <a class="green" href="#">
+                                            <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                        </a>
+
+                                        <a class="red" href="#">
+                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                        </a>
+                                        <a href="~/Admin/TaiKhoan/DuyetTaiKhoan?id=@item.tk"><span class="label label-success arrowed ">Duyệt</span></a>
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                        }
+                    
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
